@@ -1,6 +1,6 @@
 import os
 import boto3
-os.environ['AWS_DEFAULT_REGION'] = 'eu-central-1'
+# os.environ['AWS_DEFAULT_REGION'] = 'eu-central-1'
 
 # Document
 documentName = "a.jpg"
@@ -10,7 +10,7 @@ with open(documentName, 'rb') as document:
     imageBytes = bytearray(document.read())
 
 # Amazon Textract client
-textract = boto3.client('textract', region_name='eu-central-1')
+textract = boto3.client('textract', region_name='eu-central-1b')
 
 # Call Amazon Textract
 response = textract.detect_document_text(Document={'Bytes': imageBytes})
