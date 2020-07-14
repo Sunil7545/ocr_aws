@@ -1,6 +1,6 @@
 import os
 import boto3
-
+import itertools
 
 def extract_text(file_name):
 
@@ -23,6 +23,7 @@ def extract_text(file_name):
             # print(loc_variable)
             detected_lines.append(loc_variable)
 
+    detected_lines = list(itertools.chain(*detected_lines))
     print(detected_lines)
     return detected_lines
 
