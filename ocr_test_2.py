@@ -1,4 +1,6 @@
+import os
 import boto3
+os.environ['AWS_DEFAULT_REGION'] = 'eu-central-1'
 
 # Document
 documentName = "a.jpg"
