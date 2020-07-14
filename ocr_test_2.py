@@ -26,7 +26,7 @@ def extract_text(file_name):
             detected_lines.append(loc_variable)
 
     detected_lines = list(itertools.chain(*detected_lines))
-    print(detected_lines)
+    # print(detected_lines)
     return detected_lines
 
 
@@ -41,7 +41,7 @@ document_name = args.image
 key_name = args.key_word
 text_extracted = extract_text(document_name)
 
-print(key_name)
+print(text_extracted.count(key_name))
 
 
 
