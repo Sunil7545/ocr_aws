@@ -1,6 +1,8 @@
 import os
 import boto3
 import itertools
+import argparse
+
 
 def extract_text(file_name):
 
@@ -29,7 +31,12 @@ def extract_text(file_name):
 
 
 # Document
-document_name = "a.jpg"
+# document_name = "a.jpg"
+# input folder name, which has data
+parser = argparse.ArgumentParser()
+parser.add_argument("image", help="select the input image for text extraction", type=str)
+args = parser.parse_args()
+document_name = args.data
 text_extracted = extract_text(document_name)
 
 
