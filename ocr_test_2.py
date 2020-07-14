@@ -36,7 +36,7 @@ def extract_text(file_name):
 parser = argparse.ArgumentParser()
 parser.add_argument("image", help="select the input image for text extraction", type=str)
 args = parser.parse_args()
-document_name = args.data
+document_name = args.image
 text_extracted = extract_text(document_name)
 
 
