@@ -19,7 +19,7 @@ def extract_text(file_name):
     for item in response["Blocks"]:
         if item["BlockType"] == "LINE":
             # loc_variable = '\033[94m' + item["Text"] + '\033[0m'
-            loc_variable = str(item["Text"])
+            loc_variable = item["Text"].split(" ")
             # print(loc_variable)
             detected_lines.append(loc_variable)
 
