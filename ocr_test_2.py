@@ -8,7 +8,7 @@ with open(documentName, 'rb') as document:
     imageBytes = bytearray(document.read())
 
 # Amazon Textract client
-textract = boto3.client('textract')
+textract = boto3.client('textract', region_name='eu-central-1')
 
 # Call Amazon Textract
 response = textract.detect_document_text(Document={'Bytes': imageBytes})
