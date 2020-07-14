@@ -35,9 +35,13 @@ def extract_text(file_name):
 # input folder name, which has data
 parser = argparse.ArgumentParser()
 parser.add_argument("image", help="select the input image for text extraction", type=str)
+parser.add_argument("key_word", help="to check in the document", type=str)
 args = parser.parse_args()
 document_name = args.image
+key_name = args.key_word
 text_extracted = extract_text(document_name)
+
+print(key_name)
 
 
 
