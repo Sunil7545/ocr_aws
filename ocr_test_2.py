@@ -17,7 +17,12 @@ response = textract.detect_document_text(Document={'Bytes': imageBytes})
 
 #print(response)
 
+detected_lines = []
 # Print detected text
 for item in response["Blocks"]:
     if item["BlockType"] == "LINE":
-        print('\033[94m' + item["Text"] + '\033[0m')
+        loc_variable = '\033[94m' + item["Text"] + '\033[0m'
+        print(loc_variable)
+        detected_lines.append(loc_variable)
+        
+print(len(detected_lines))
