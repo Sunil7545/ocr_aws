@@ -8,11 +8,19 @@ import matplotlib.image as mpimg
 
 def extract_text(file_name):
 
+    # configure S3
+
+    # s3 = boto3.resource('s3', region_name='eu-west-1')
+    # bucket = s3.Bucket(file_name)
+    # object = bucket.Object('a.jpg')
+    # tmp = tempfile.NamedTemporaryFile()
+    # print(tmp.name)
     # Read document content
     with open(file_name, 'rb') as document:
         image_bytes = bytearray(document.read())
 
     # Amazon Textract client
+    print(np.array(image_bytes).shape)
     text_extract = boto3.client('textract', region_name='eu-west-1')
 
     # Call Amazon Text-ract
@@ -50,6 +58,7 @@ tmp = tempfile.NamedTemporaryFile()
 with open(tmp.name, 'wb') as f:
     object.download_fileobj(f)
     img = mpimg.imread(tmp.name)
+    # img = bytearray(f.read())
     print(np.array(img).shape)
 print(text_extracted.count(key_name))
 
