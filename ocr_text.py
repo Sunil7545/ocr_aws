@@ -61,7 +61,9 @@ def main():
 
 
 if __name__ == '__main__':
-    get_files_s3('textract-data-sky')
+    # get_files_s3('textract-data-sky')
+    main()
+
     
 
 
