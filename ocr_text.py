@@ -14,7 +14,6 @@ def extract_text(file_name):
         image_bytes = bytearray(document.read())
 
     # Amazon Textract client
-    print(np.array(image_bytes).shape)
     text_extract = boto3.client('textract', region_name='eu-west-1')
 
     # Call Amazon Text-ract
@@ -56,15 +55,18 @@ def main():
     document_name = args.image
     key_name = args.key_word
     text_extracted = extract_text(document_name)
-
-    print(text_extracted.count(key_name))
+    num_count = text_extracted.count(key_name)
+    if num_count == 0:
+        print("The entered value is not matching from the document")
+    elif num_count == 1":
+        print("The entered value is matching in the document")
+    else:
+        print("The entered value appears more than once in the document")
 
 
 if __name__ == '__main__':
     # get_files_s3('textract-data-sky')
     main()
-
-    
 
 
 
