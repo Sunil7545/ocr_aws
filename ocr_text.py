@@ -58,7 +58,7 @@ def main():
     num_count = text_extracted.count(key_name)
     if num_count == 0:
         print("The entered value is not matching from the document")
-    elif num_count == 1":
+    elif num_count == 1:
         print("The entered value is matching in the document")
     else:
         print("The entered value appears more than once in the document")
