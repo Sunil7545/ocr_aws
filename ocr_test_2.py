@@ -2,7 +2,9 @@ import os
 import boto3
 import itertools
 import argparse
-
+import tempfile
+import numpy as np
+import matplotlib.image as mpimg
 
 def extract_text(file_name):
 
@@ -40,7 +42,15 @@ args = parser.parse_args()
 document_name = args.image
 key_name = args.key_word
 text_extracted = extract_text(document_name)
-
+s3 = boto3.resource('s3', region_name='eu-west-1')
+# s3 = boto3.client('s3')
+bucket = s3.Bucket('textract-data-sky')
+object = bucket.Object('a.jpg')
+tmp = tempfile.NamedTemporaryFile()
+with open(tmp.name, 'wb') as f:
+    object.download_fileobj(f)
+    img = mpimg.imread(tmp.name)
+    print(np.array(img).shape)
 print(text_extracted.count(key_name))
 
 
