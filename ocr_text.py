@@ -66,7 +66,12 @@ def main():
 
 if __name__ == '__main__':
     # get_files_s3('textract-data-sky')
-    main()
+    s3 = boto3.resource('s3')
+    my_bucket = s3.Bucket('textract-data-sky')
+
+    for object_summary in my_bucket.objects.filter(Prefix="user_00/"):
+        print(object_summary.key)
+    # main()
 
 
 
